@@ -200,6 +200,32 @@
     display: block;
   }
 
+  /* Inline 2-column image grid within story */
+  .inline-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin: 40px 0;
+  }
+  .inline-grid-item {
+    display: flex;
+    flex-direction: column;
+  }
+  .inline-grid-item img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 2px;
+    display: block;
+  }
+  .inline-grid-item figcaption {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+
   /* Two images stacked in a column beside text */
   .story-img-stack {
     display: flex;
@@ -450,49 +476,39 @@
 <!-- STORY BODY -->
 <article class="story">
 
-  <!-- Opening section: text beside concert image on desktop -->
-  <div class="story-with-img">
-    <div class="story-text">
-      <p>I'm a true believer in everything happening for a reason. And I don't mean that in the sense of being lucky; I mean it in the way that missing your bus, getting turned down for a job, finding the right person (or the wrong one) steers you in the direction you were meant to go. If it wasn't for the things that happen to us, good and bad, we wouldn't be where we are today.</p>
+  <p>I'm a true believer in everything happening for a reason. And I don't mean that in the sense of being lucky; I mean it in the way that missing your bus, getting turned down for a job, finding the right person (or the wrong one) steers you in the direction you were meant to go. If it wasn't for the things that happen to us, good and bad, we wouldn't be where we are today.</p>
 
-      <p>It's this thinking that leads me to believe that everything had to fall into place, in exactly the right sequence, for Iris and I to meet.</p>
+  <p>It's this thinking that leads me to believe that everything had to fall into place, in exactly the right sequence, for Iris and I to meet.</p>
 
-      <p>My partner Conor is a cricketer. He's played domestically in South Australia and taken contracts overseas, which has shaped a lot of how we live. We follow the seasons, we build a life that has cricket running through the middle of it, and one of the things that comes with that life is the opportunity to spend time in places we'd never otherwise land, around people we'd never otherwise meet. In 2024, we decided to make the most of it and spend a summer abroad together. Conor playing overseas meant our accommodation would be subsidised, so we'd have a base and could travel. England had always been the goal, the place we knew we wanted to go. Unfortunately, due to competition rules around the number of games a player could accumulate at a professional level, Conor wasn't eligible to play in England, so we started looking at other options. His agent found a club in the Netherlands, the Haagsche Cricket Club, known as 'HCC'. I remember thinking at the time: there's cricket in the Netherlands? Like an actual competition?</p>
+  <p>My partner Conor is a cricketer. He's played domestically in South Australia and taken contracts overseas, which has shaped a lot of how we live. We follow the seasons, we build a life that has cricket running through the middle of it, and one of the things that comes with that life is the opportunity to spend time in places we'd never otherwise land, around people we'd never otherwise meet. In 2024, we decided to make the most of it and spend a summer abroad together. Conor playing overseas meant our accommodation would be subsidised, so we'd have a base and could travel. England had always been the goal, the place we knew we wanted to go. Unfortunately, due to competition rules around the number of games a player could accumulate at a professional level, Conor wasn't eligible to play in England, so we started looking at other options. His agent found a club in the Netherlands, the Haagsche Cricket Club, known as 'HCC'. I remember thinking at the time: there's cricket in the Netherlands? Like an actual competition?</p>
 
-      <p>Conor headed over two weeks before I did while I finished up at work, and by the time I arrived he'd already settled in and met everyone at the club. He'd specifically mentioned one person he thought I'd get on with, she played for the women's team, her name was Iris. I flew into the Netherlands on a Monday, and spent my first few days getting to know my new home. A few days after I landed, Iris messaged Conor to ask if his girlfriend liked Olivia Rodrigo, and if she was free on Friday. She had a spare ticket to a show in Amsterdam and thought I might want to come. I'd just quit my job and moved to the other side of the world, so when Conor passed the message on, I didn't overthink it. I specifically remember saying to Conor, "Yeah Fuck It, Why Not".</p>
+  <p>Conor headed over two weeks before I did while I finished up at work, and by the time I arrived he'd already settled in and met everyone at the club. He'd specifically mentioned one person he thought I'd get on with, she played for the women's team, her name was Iris. I flew into the Netherlands on a Monday, and spent my first few days getting to know my new home. A few days after I landed, Iris messaged Conor to ask if his girlfriend liked Olivia Rodrigo, and if she was free on Friday. She had a spare ticket to a show in Amsterdam and thought I might want to come. I'd just quit my job and moved to the other side of the world, so when Conor passed the message on, I didn't overthink it. I specifically remember saying to Conor, "Yeah Fuck It, Why Not".</p>
 
-      <p>The first time Iris and I met was at Den Haag Centraal train station, on our way to Amsterdam for the concert. What I remember most about that night is how quickly it felt like we'd known each other for years. We went with her friend Fleur, we talked the whole way there and back, and somewhere between the train and the music and the walk home, that was it, we were friends.</p>
-    </div>
+  <p>The first time Iris and I met was at Den Haag Centraal train station, on our way to Amsterdam for the concert. What I remember most about that night is how quickly it felt like we'd known each other for years. We went with her friend Fleur, we talked the whole way there and back, and somewhere between the train and the music and the walk home, that was it, we were friends.</p>
 
-    <!-- Inline story image: concert night -->
-    <figure class="story-img">
+  <!-- 2-column image grid: June & July 2024 -->
+  <div class="inline-grid">
+    <figure class="inline-grid-item">
       <img src="images/img1.png" alt="Iris, Georgie and Fleur at the Olivia Rodrigo concert in Amsterdam">
       <figcaption>June 2024 - The first night we met at the Olivia Rodrigo concert</figcaption>
     </figure>
+    <figure class="inline-grid-item">
+      <img src="images/img2.png" alt="Iris, Georgie and Fleur in Amsterdam">
+      <figcaption>June 2024 - Iris, Georgie and Fleur in Amsterdam</figcaption>
+    </figure>
+    <figure class="inline-grid-item">
+      <img src="images/img3.png" alt="Sarah visits Den Haag and meets Iris and the HCC crew">
+      <figcaption>July 2024 - Sarah comes to visit and meets the HCC crew</figcaption>
+    </figure>
   </div>
 
-  <div class="story-with-img">
-    <div class="story-text">
-      <p>After three months in Den Haag we were attached at the hip, and by the end of the summer I was convincing her to come to Adelaide for the cricket season and join our family holiday to Bali. She came back again for her second season in 2025 and lived with me, and in June 2026 I travelled to England to watch her play in the World Cup. As I'm writing this, Iris is back in Adelaide, here for my brother's wedding, and then travelling with me to Vietnam to find my wedding dress.</p>
+  <p>After three months in Den Haag we were attached at the hip, and by the end of the summer I was convincing her to come to Adelaide for the cricket season and join our family holiday to Bali. She came back again for her second season in 2025 and lived with me, and in June 2026 I travelled to England to watch her play in the World Cup. As I'm writing this, Iris is back in Adelaide, here for my brother's wedding, and then travelling with me to Vietnam to find my wedding dress.</p>
 
-      <p>This is what I mean when I say everything happens for a reason. If we'd gone to England and not Den Haag, if we'd chosen a different year to go, if I hadn't said yes to a concert with a stranger we wouldn't be here today.</p>
+  <p>This is what I mean when I say everything happens for a reason. If we'd gone to England and not Den Haag, if we'd chosen a different year to go, if I hadn't said yes to a concert with a stranger we wouldn't be here today.</p>
 
-      <p>After spending that time around Iris, her team, and women's professional sport, I wanted to share her story. I'd tell anyone who would listen <em>"did you know this is the first time in history the Dutch women's team have ever qualified for a World Cup?"</em> and <em>"Iris is the first Dutch cricketer male or female to take 100 T20I wickets."</em> These stats are wild, and they're not something to move past. The more Iris and I spoke about her experience, how it felt for the team and their families, and what it's really like for these women compared to those who get to do this full time because financially they can, the more I wanted to put it somewhere. They defied the odds. They go against the grain. They work hard because they love what they do.</p>
+  <p>After spending that time around Iris, her team, and women's professional sport, I wanted to share her story. I'd tell anyone who would listen <em>"did you know this is the first time in history the Dutch women's team have ever qualified for a World Cup?"</em> and <em>"Iris is the first Dutch cricketer male or female to take 100 T20I wickets."</em> These stats are wild, and they're not something to move past. The more Iris and I spoke about her experience, how it felt for the team and their families, and what it's really like for these women compared to those who get to do this full time because financially they can, the more I wanted to put it somewhere. They defied the odds. They go against the grain. They work hard because they love what they do.</p>
 
-      <p>This is her story.</p>
-    </div>
-
-    <div class="story-img-stack">
-      <figure class="story-img">
-        <img src="images/img2.png" alt="Iris, Georgie and Fleur at the Olivia Rodrigo concert in Amsterdam">
-        <figcaption>June 2024 - Iris, Georgie and Fleur in Amsterdam</figcaption>
-      </figure>
-      <figure class="story-img">
-        <img src="images/img3.png" alt="Sarah visits Den Haag and meets Iris and the HCC crew">
-        <figcaption>July 2024 - Sarah comes to visit and meets the HCC crew</figcaption>
-      </figure>
-    </div>
-  </div>
+  <p>This is her story.</p>
 
   <!-- CHAPTER: HOW IT STARTED -->
   <div class="chapter">
