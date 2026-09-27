@@ -147,28 +147,31 @@
   @media (min-width: 768px) {
     .story-with-img {
       display: grid;
-      grid-template-columns: 1fr 340px;
+      grid-template-columns: 1fr 480px;
       gap: 48px;
       align-items: start;
     }
     .story-with-img.img-left {
-      grid-template-columns: 340px 1fr;
+      grid-template-columns: 480px 1fr;
     }
     .story-with-img.img-left .story-img {
       order: -1;
     }
+    .story-with-img.img-left .story-img-stack {
+      order: -1;
+    }
     /* larger image variant */
     .story-with-img.img-lg {
-      grid-template-columns: 1fr 460px;
+      grid-template-columns: 1fr 560px;
     }
   }
 
   @media (min-width: 1200px) {
     .story-with-img {
-      grid-template-columns: 1fr 400px;
+      grid-template-columns: 1fr 560px;
     }
     .story-with-img.img-lg {
-      grid-template-columns: 1fr 540px;
+      grid-template-columns: 1fr 640px;
     }
   }
 
@@ -226,15 +229,13 @@
     margin-top: 8px;
   }
 
-  /* Two images stacked in a column beside text */
+  /* Images in a 2-column grid beside text */
   .story-img-stack {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 6px;
     flex-shrink: 0;
-  }
-  .story-img-stack .story-img {
-    flex: 1;
+    align-self: start;
   }
 
   .story-img figcaption,
@@ -476,16 +477,16 @@
 <!-- STORY BODY -->
 <article class="story">
 
-  <p>I'm a true believer in everything happening for a reason. And I don't mean that in the sense of being lucky; I mean it in the way that missing your bus, getting turned down for a job, finding the right person (or the wrong one) steers you in the direction you were meant to go. If it wasn't for the things that happen to us, good and bad, we wouldn't be where we are today.</p>
-
-  <p>It's this thinking that leads me to believe that everything had to fall into place, in exactly the right sequence, for Iris and I to meet.</p>
-
-  <p>My partner Conor is a cricketer. He's played domestically in South Australia and taken contracts overseas, which has shaped a lot of how we live. We follow the seasons, we build a life that has cricket running through the middle of it, and one of the things that comes with that life is the opportunity to spend time in places we'd never otherwise land, around people we'd never otherwise meet. In 2024, we decided to make the most of it and spend a summer abroad together. Conor playing overseas meant our accommodation would be subsidised, so we'd have a base and could travel. England had always been the goal, the place we knew we wanted to go. Unfortunately, due to competition rules around the number of games a player could accumulate at a professional level, Conor wasn't eligible to play in England, so we started looking at other options. His agent found a club in the Netherlands, the Haagsche Cricket Club, known as 'HCC'. I remember thinking at the time: there's cricket in the Netherlands? Like an actual competition?</p>
-
-  <p>Conor headed over two weeks before I did while I finished up at work, and by the time I arrived he'd already settled in and met everyone at the club. He'd specifically mentioned one person he thought I'd get on with, she played for the women's team, her name was Iris. I flew into the Netherlands on a Monday, and spent my first few days getting to know my new home. A few days after I landed, Iris messaged Conor to ask if his girlfriend liked Olivia Rodrigo, and if she was free on Friday. She had a spare ticket to a show in Amsterdam and thought I might want to come. I'd just quit my job and moved to the other side of the world, so when Conor passed the message on, I didn't overthink it. I specifically remember saying to Conor, "Yeah Fuck It, Why Not".</p>
-
   <div class="story-with-img">
     <div class="story-text">
+      <p>I'm a true believer in everything happening for a reason. And I don't mean that in the sense of being lucky; I mean it in the way that missing your bus, getting turned down for a job, finding the right person (or the wrong one) steers you in the direction you were meant to go. If it wasn't for the things that happen to us, good and bad, we wouldn't be where we are today.</p>
+
+      <p>It's this thinking that leads me to believe that everything had to fall into place, in exactly the right sequence, for Iris and I to meet.</p>
+
+      <p>My partner Conor is a cricketer. He's played domestically in South Australia and taken contracts overseas, which has shaped a lot of how we live. We follow the seasons, we build a life that has cricket running through the middle of it, and one of the things that comes with that life is the opportunity to spend time in places we'd never otherwise land, around people we'd never otherwise meet. In 2024, we decided to make the most of it and spend a summer abroad together. Conor playing overseas meant our accommodation would be subsidised, so we'd have a base and could travel. England had always been the goal, the place we knew we wanted to go. Unfortunately, due to competition rules around the number of games a player could accumulate at a professional level, Conor wasn't eligible to play in England, so we started looking at other options. His agent found a club in the Netherlands, the Haagsche Cricket Club, known as 'HCC'. I remember thinking at the time: there's cricket in the Netherlands? Like an actual competition?</p>
+
+      <p>Conor headed over two weeks before I did while I finished up at work, and by the time I arrived he'd already settled in and met everyone at the club. He'd specifically mentioned one person he thought I'd get on with, she played for the women's team, her name was Iris. I flew into the Netherlands on a Monday, and spent my first few days getting to know my new home. A few days after I landed, Iris messaged Conor to ask if his girlfriend liked Olivia Rodrigo, and if she was free on Friday. She had a spare ticket to a show in Amsterdam and thought I might want to come. I'd just quit my job and moved to the other side of the world, so when Conor passed the message on, I didn't overthink it. I specifically remember saying to Conor, "Yeah Fuck It, Why Not".</p>
+
       <p>The first time Iris and I met was at Den Haag Centraal train station, on our way to Amsterdam for the concert. What I remember most about that night is how quickly it felt like we'd known each other for years. We went with her friend Fleur, we talked the whole way there and back, and somewhere between the train and the music and the walk home, that was it, we were friends.</p>
 
       <p>After three months in Den Haag we were attached at the hip, and by the end of the summer I was convincing her to come to Adelaide for the cricket season and join our family holiday to Bali. She came back again for her second season in 2025 and lived with me, and in June 2026 I travelled to England to watch her play in the World Cup. As I'm writing this, Iris is back in Adelaide, here for my brother's wedding, and then travelling with me to Vietnam to find my wedding dress.</p>
