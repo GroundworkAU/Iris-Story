@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iris &amp; G</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #FAF5EE;
+    --ink: #1a1714;
+    --muted: #7a736b;
+    --rule: #ddd8d0;
+    --accent: #b54b25;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --max: 700px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--serif);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--rule);
+    padding: 14px 24px;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  nav .nav-title {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color: var(--ink);
+  }
+  nav .nav-sub {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    min-height: 520px;
+    overflow: hidden;
+  }
+  .hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    display: block;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(250,245,238,0) 30%, rgba(250,245,238,0.7) 70%, rgba(250,245,238,1) 100%);
+  }
+  .hero-text {
+    position: absolute;
+    bottom: 48px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 0 24px;
+  }
+  .hero-text h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+  .hero-text .byline {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* MAIN STORY */
+  .story {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 64px 24px 80px;
+  }
+
+  .story p {
+    font-size: clamp(1.05rem, 2.2vw, 1.18rem);
+    font-weight: 300;
+    color: var(--ink);
+    margin-bottom: 1.6em;
+    line-height: 1.8;
+  }
+
+  .story em {
+    font-style: italic;
+  }
+
+  /* CHAPTER HEADERS */
+  .chapter {
+    margin: 56px 0 28px;
+    padding-top: 28px;
+    border-top: 1px solid var(--rule);
+  }
+  .chapter-label {
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+    display: block;
+  }
+  .chapter h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+
+  /* INLINE STORY IMAGES */
+  .story-img {
+    margin: 40px -16px;
+    position: relative;
+  }
+  @media (min-width: 600px) {
+    .story-img { margin: 40px 0; }
+  }
+  .story-img img {
+    width: 100%;
+    display: block;
+    border-radius: 2px;
+  }
+  .story-img figcaption {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  /* PULL QUOTE */
+  .pullquote {
+    margin: 40px 0;
+    padding: 28px 0 28px 24px;
+    border-left: 2px solid var(--accent);
+  }
+  .pullquote p {
+    font-family: var(--serif);
+    font-size: clamp(1.2rem, 3vw, 1.55rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0;
+  }
+  .pullquote cite {
+    display: block;
+    margin-top: 10px;
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-style: normal;
+  }
+
+  /* WORLD CUP GRID */
+  .wc-grid {
+    margin: 40px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .wc-grid .wc-span {
+    grid-column: 1 / -1;
+  }
+  .wc-grid img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    border-radius: 2px;
+  }
+  .wc-grid .wc-span img {
+    height: 300px;
+  }
+  @media (min-width: 600px) {
+    .wc-grid img { height: 260px; }
+    .wc-grid .wc-span img { height: 380px; }
+  }
+
+  /* STATS */
+  .stats {
+    background: #1a1714;
+    color: var(--bg);
+    padding: 64px 24px;
+    text-align: center;
+  }
+  .stats-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+  .stats-title {
+    font-family: var(--serif);
+    font-size: clamp(1.4rem, 3.5vw, 2rem);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    margin-bottom: 36px;
+    color: var(--bg);
+  }
+  .stats ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .stats li {
+    font-family: var(--serif);
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    font-weight: 300;
+    font-style: italic;
+    color: #d8d0c5;
+    line-height: 1.4;
+  }
+
+  /* TIMELINE GALLERY */
+  .timeline {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 72px 24px 80px;
+  }
+  .timeline-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .timeline-header .tl-label {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+    display: block;
+  }
+  .timeline-header h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 300;
+    color: var(--ink);
+  }
+
+  .tl-period {
+    margin-bottom: 52px;
+  }
+  .tl-period-label {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 10px;
+    margin-bottom: 16px;
+  }
+  .tl-grid {
+    display: grid;
+    gap: 6px;
+  }
+  .tl-grid.cols-1 { grid-template-columns: 1fr; }
+  .tl-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+  .tl-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .tl-grid.cols-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+
+  .tl-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+  }
+  .tl-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .tl-item:hover img {
+    transform: scale(1.03);
+  }
+  .tl-item figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(26,23,20,0.75) 0%, transparent 100%);
+    color: #FAF5EE;
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    padding: 24px 10px 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .tl-item:hover figcaption {
+    opacity: 1;
+  }
+
+  @media (max-width: 500px) {
+    .tl-grid.cols-3 { grid-template-columns: 1fr 1fr; }
+    .tl-grid.cols-4 { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 48px 24px;
+    border-top: 1px solid var(--rule);
+  }
+  footer p {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    text-transform: uppercase;
+    line-height: 1.8;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-title">Iris &amp; G</span>
+  <span class="nav-sub">ICC Women's T20 World Cup 2026</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img src="images/img19.png" alt="Iris Zwilling at the ICC Women's T20 World Cup 2026">
+  <div class="hero-overlay"></div>
+  <div class="hero-text">
+    <h1>Iris &amp; G</h1>
+    <p class="byline">By Georgie Morris</p>
+  </div>
+</section>
+
+<!-- STORY BODY -->
+<article class="story">
+
+  <p>I'm a true believer in everything happening for a reason. And I don't mean that in the sense of being lucky; I mean it in the way that missing your bus, getting turned down for a job, finding the right person (or the wrong one) steers you in the direction you were meant to go. If it wasn't for the things that happen to us, good and bad, we wouldn't be where we are today.</p>
+
+  <p>It's this thinking that leads me to believe that everything had to fall into place, in exactly the right sequence, for Iris and I to meet.</p>
+
+  <p>My partner Conor is a cricketer. He's played domestically in South Australia and taken contracts overseas, which has shaped a lot of how we live. We follow the seasons, we build a life that has cricket running through the middle of it, and one of the things that comes with that life is the opportunity to spend time in places we'd never otherwise land, around people we'd never otherwise meet. In 2024, we decided to make the most of it and spend a summer abroad together. Conor playing overseas meant our accommodation would be subsidised, so we'd have a base and could travel. England had always been the goal, the place we knew we wanted to go. Unfortunately, due to competition rules around the number of games a player could accumulate at a professional level, Conor wasn't eligible to play in England, so we started looking at other options. His agent found a club in the Netherlands, the Haagsche Cricket Club, known as 'HCC'. I remember thinking at the time: there's cricket in the Netherlands? Like an actual competition?</p>
+
+  <p>Conor headed over two weeks before I did while I finished up at work, and by the time I arrived he'd already settled in and met everyone at the club. He'd specifically mentioned one person he thought I'd get on with, she played for the women's team, her name was Iris. I flew into the Netherlands on a Monday, and spent my first few days getting to know my new home. A few days after I landed, Iris messaged Conor to ask if his girlfriend liked Olivia Rodrigo, and if she was free on Friday. She had a spare ticket to a show in Amsterdam and thought I might want to come. I'd just quit my job and moved to the other side of the world, so when Conor passed the message on, I didn't overthink it. I specifically remember saying to Conor, "Yeah Fuck It, Why Not".</p>
+
+  <p>The first time Iris and I met was at Den Haag Centraal train station, on our way to Amsterdam for the concert. What I remember most about that night is how quickly it felt like we'd known each other for years. We went with her friend Fleur, we talked the whole way there and back, and somewhere between the train and the music and the walk home, that was it, we were friends.</p>
+
+  <!-- Inline story image: Images 1 & 2 - concert night -->
+  <figure class="story-img">
+    <img src="images/img1.png" alt="Iris, Georgie and Fleur at the Olivia Rodrigo concert in Amsterdam">
+    <figcaption>June 2024 - The first night we met at the Olivia Rodrigo concert</figcaption>
+  </figure>
+
+  <p>After three months in Den Haag we were attached at the hip, and by the end of the summer I was convincing her to come to Adelaide for the cricket season and join our family holiday to Bali. She came back again for her second season in 2025 and lived with me, and in June 2026 I travelled to England to watch her play in the World Cup. As I'm writing this, Iris is back in Adelaide, here for my brother's wedding, and then travelling with me to Vietnam to find my wedding dress.</p>
+
+  <p>This is what I mean when I say everything happens for a reason. If we'd gone to England and not Den Haag, if we'd chosen a different year to go, if I hadn't said yes to a concert with a stranger we wouldn't be here today.</p>
+
+  <p>After spending that time around Iris, her team, and women's professional sport, I wanted to share her story. I'd tell anyone who would listen <em>"did you know this is the first time in history the Dutch women's team have ever qualified for a World Cup?"</em> and <em>"Iris is the first Dutch cricketer male or female to take 100 T20I wickets."</em> These stats are wild, and they're not something to move past. The more Iris and I spoke about her experience, how it felt for the team and their families, and what it's really like for these women compared to those who get to do this full time because financially they can, the more I wanted to put it somewhere. They defied the odds. They go against the grain. They work hard because they love what they do.</p>
+
+  <p>This is her story.</p>
+
+  <!-- CHAPTER: HOW IT STARTED -->
+  <div class="chapter">
+    <span class="chapter-label">01</span>
+    <h2>How it started</h2>
+  </div>
+
+  <p>Iris grew up in Den Haag (known as The Hague in English), in the same house where her dad and uncle grew up which was right next door to HCC. Her dad and uncle had drifted over to the cricket side of the club out of curiosity one day and started playing (and never really stopped). Her brother Rik followed, then her sister Mikkie, and by the time Iris was old enough she just wanted to do what her siblings did.</p>
+
+  <p>Growing up, Iris never played cricket to become good at it or to go professional, she played because it was fun. It wasn't until other parents started asking why she and Mikkie weren't in the youth setups that the idea even entered the picture. They went to trials, made it into the system, and the rest unfolded from there. Her parents were happy as long as she was enjoying it, and when the time came to make bigger decisions like going abroad and putting her psychology career on hold, they supported her without question. Her dad has been her biggest fan from the start and still is, cheering her on at every game, and spending the entire World Cup in England so he wouldn't miss a moment. Iris' mum, who by her own admission isn't much of a sportswoman, has since become a devoted cricket fan in her own right.</p>
+
+  <p>Outside of her family, a couple of coaches along the way have had a lasting impact on the cricketer Iris is today. At HCC, when Iris was around thirteen or fourteen, two overseas coaches named Ryan Ninan and Jonathan Vandiar started taking her cricket seriously in a way that changed everything. Ryan was, by Iris's own description, something of a magician with a cricket ball. He could bowl right handed, left handed, leg spin, off spin, in swing, out swing and he taught her the foundations of bowling that she still builds on today. Jonathan worked with her on her batting, running the same drills over and over on Friday afternoons until the right habits stuck. He kept coming back to HCC season after season, and in 2024 he joined the coaching staff of the Dutch Women's team, a full circle moment that Iris says had a massive role in their qualification for the World Cup. Without them both, she'll tell you, she wouldn't be the cricketer she is today.</p>
+
+  <p>Cricket in the Netherlands is almost invisible. It gets confused with croquet, with curling, with polo; and Iris has been asked more than once how she transports her horse when she travels overseas for matches. The sport that billions of people follow like a religion is, in the Netherlands, something most people have never actually seen played in real life. Unfortunately this lack of visibility comes with its challenges; underfunding, limited resources, minimal coaching, and very few opportunities for the game to grow. To put that into perspective; there are roughly 150 women who play cricket in the Netherlands. In India, that number is closer to 60 million. The Netherlands qualified for the same World Cup.</p>
+
+  <p>For years, women's cricket in the Netherlands paid nothing at all, which left players to fund their own tours and buy their own kit. While that had changed by the time Iris came through, there were still no contracts, no steady income, no real pathway to making cricket a full-time career.</p>
+
+  <p>Something that really stood out to me when I met Iris and her teammates was the commitment they had to their sport. Iris shares a similar story to many in her team; she recently completed her Master's in Forensic and Legal Psychology, fitting it in between waitressing and coaching jobs to keep herself afloat, all while playing cricket professionally for her country. She wrote her Thesis in hotel rooms across the world and did study sessions with teammates in hotel lobbies between tours. When she was offered an internship at a Forensic Psychiatric Hospital, the kind of opportunity that gives a psychology career real momentum, she turned it down. She could work as a psychologist for the rest of her life, but cricket has a time limit. Iris wanted to give it a proper go, to never look back wondering <em>what if</em>, and honestly, that kind of decisiveness is something I've always admired about her.</p>
+
+  <p>The conditions they trained in to prepare for the Global Qualifier say everything about the difference between cricket in the Netherlands and cricket in countries like Australia, England and India. The squad would cycle to indoor training nets in -5 degree temperatures, through the snow, with the nets themselves the same temperature as outside. When Iris told her Australian teammates that the Dutch national side were lucky to train on grass once a week, they were genuinely shocked. It had never occurred to them that it could be any other way.</p>
+
+  <p>With such a small pool of players in the Netherlands, there is only one women's cricket competition in the country. The week after the World Cup, Iris went back to her local club and found herself facing her friend's mum on the field, someone who had jumped in just so the team had enough players to compete. One week she was facing Shabnim Ismail, the next, her mate's mum. I don't think there's a better image for what these women navigate, and what makes what they've achieved so remarkable.</p>
+
+  <!-- CHAPTER: THE QUALIFIERS -->
+  <div class="chapter">
+    <span class="chapter-label">02</span>
+    <h2>The Qualifiers - Nepal, January 2026</h2>
+  </div>
+
+  <!-- Inline story image: Image 18 - Nepal qualifier -->
+  <figure class="story-img">
+    <img src="images/img18.png" alt="Dutch Women's team qualify for the World Cup in Nepal">
+    <figcaption>January 2026 - Iris travels from Australia to Nepal for the World Cup Qualifier. The Dutch Women qualify for the first time in history.</figcaption>
+  </figure>
+
+  <p>A bug had been working its way through the squad for most of the Global Qualifier tournament, and by the time the USA match arrived Iris had caught it. She barely slept the night before, and that morning coach Neil McRae told her that all he needed from her was three overs in the powerplay, and after that she could rest.</p>
+
+  <p>Iris bowled 4 overs in the first innings, with rain stopping play midway through the second. The DLS had the Netherlands ahead, and if the game was called they were going to the World Cup. She watched from where she was sitting as the umpires called the captains over. When Babette de Leede walked back toward the team with a smile on her face, nodding, the cheers started before anyone needed to say a word.</p>
+
+  <div class="pullquote">
+    <p>"For the minutes to follow I couldn't feel ill anymore. I could only feel relief and excitement."</p>
+    <cite>Iris Zwilling</cite>
+  </div>
+
+  <p>They celebrated in the pouring rain, sliding on the soaking wet covers with their families and coaching staff all there. I think that image, everyone completely drenched, completely elated, in true Dutch fashion, is the one I keep coming back to when I think about what this team is made of.</p>
+
+  <p>Before Nepal, and before the World Cup, there was another milestone worth stopping on. Iris became the first Dutch cricketer, male or female, to take 100 T20 international wickets. For someone who has had to fight for every opportunity, it felt like exactly the kind of record she deserved to hold.</p>
+
+  <!-- CHAPTER: THE WORLD CUP -->
+  <div class="chapter">
+    <span class="chapter-label">03</span>
+    <h2>The World Cup, June 2026</h2>
+  </div>
+
+  <p>It had been two years since I'd said yes to a concert with a stranger, and here we were again, everything happening exactly as it was meant to. Conor and I had already booked a trip to Europe for June 2026; our good friends were getting married in Italy and we were in the wedding party. And as it turned out, the exact week we'd planned to be in London, the World Cup was on.</p>
+
+  <p>We booked a few nights in Leeds so we could watch the Netherlands take on India at Headingley, and I'd made Iris badges for anyone who would wear one - family, friends, strangers if they'd have them. We laughed when I ordered 50, wondering what on earth we'd do with them all, but I'm happy to say we didn't go home with a single one.</p>
+
+  <p>I still get emotional thinking about walking into that stadium, watching the team walk out onto the ground for the first time, seeing them stand together and sing the anthem. It felt completely surreal, but also like it was meant to be.</p>
+
+  <p>A few days later came the Australia match in Southampton, and Conor and I were supposed to be on a flight to Montenegro that morning. I'd been going back and forth on whether to change our flights and stay, or save the hassle and stick to our plans. In true Georgie last-minute fashion, I changed our flight ten hours before departure, caught the 7am train down to Southampton, and sat next to Iris's mum in the stands, which was also, somehow, the first time we'd ever met. Iris took three wickets against one of the best sides in the world, and her mum and I burst into tears. When I saw Iris after the game, signing autographs and taking pictures, I knew I wasn't going to be able to keep it together. I gave her the biggest hug, I was so immensely proud of my friend.</p>
+
+  <p>Her dad, who played at HCC for years before only recently retiring, was there too, along with her brother and sister. In their first game against Bangladesh, Iris had walked out to bat and heard her sister's voice cutting through the crowd, and she told me she heard her in every single game that followed. Against Pakistan in Bristol, their last match of the tournament, Iris bowled a wicket maiden, looked up into the stands, found her sister, and celebrated with her from twenty-two yards away.</p>
+
+  <!-- WORLD CUP PHOTO GRID -->
+  <div class="wc-grid">
+    <figure class="wc-span">
+      <img src="images/img20.png" alt="ICC Women's T20 World Cup 2026">
+    </figure>
+    <figure><img src="images/img21.png" alt="ICC Women's T20 World Cup 2026"></figure>
+    <figure><img src="images/img22.png" alt="ICC Women's T20 World Cup 2026"></figure>
+    <figure><img src="images/img23.png" alt="ICC Women's T20 World Cup 2026"></figure>
+    <figure><img src="images/img24.png" alt="ICC Women's T20 World Cup 2026"></figure>
+    <figure><img src="images/img25.png" alt="ICC Women's T20 World Cup 2026"></figure>
+  </div>
+
+</article>
+
+<!-- STATS SECTION -->
+<section class="stats">
+  <div class="stats-inner">
+    <h2 class="stats-title">Stats that make me smile.</h2>
+    <ul>
+      <li>107 wickets across 98 T20 internationals</li>
+      <li>27 ODI wickets at an average of 14.92</li>
+      <li>A five-wicket haul against Thailand</li>
+      <li>Two international half-centuries scored back-to-back</li>
+      <li>A Master's degree in Forensic and Legal Psychology</li>
+      <li>Three seasons of club cricket in Australia</li>
+      <li>One World Cup</li>
+      <li>A place in Dutch cricket history that no one before her, male or female, had ever reached.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- TIMELINE GALLERY -->
+<section class="timeline">
+  <div class="timeline-header">
+    <span class="tl-label">2024 - 2026</span>
+    <h2>Along the way</h2>
+  </div>
+
+  <!-- June 2024 -->
+  <div class="tl-period">
+    <p class="tl-period-label">June 2024</p>
+    <div class="tl-grid cols-2">
+      <figure class="tl-item">
+        <img src="images/img1.png" alt="June 2024 - The first night we met at the Olivia Rodrigo concert">
+        <figcaption>June 2024 - The first night we met at the Olivia Rodrigo concert</figcaption>
+      </figure>
+      <figure class="tl-item">
+        <img src="images/img2.png" alt="June 2024 - Iris, Georgie and Fleur in Amsterdam">
+        <figcaption>June 2024 - Iris, Georgie and Fleur in Amsterdam</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- July 2024 -->
+  <div class="tl-period">
+    <p class="tl-period-label">July 2024</p>
+    <div class="tl-grid cols-1">
+      <figure class="tl-item">
+        <img src="images/img3.png" alt="July 2024 - Sarah visits Den Haag and meets Iris and the HCC crew">
+        <figcaption>July 2024 - Sarah visits Den Haag and meets Iris and the HCC crew</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- September 2024 -->
+  <div class="tl-period">
+    <p class="tl-period-label">September 2024 - Bali</p>
+    <div class="tl-grid cols-3">
+      <figure class="tl-item">
+        <img src="images/img4.png" alt="September 2024 - Bali, our family holiday for my father-in-law's 60th birthday">
+        <figcaption>September 2024 - Bali, our family holiday for my father-in-law's 60th birthday</figcaption>
+      </figure>
+      <figure class="tl-item">
+        <img src="images/img5.png" alt="September 2024 - Bali family holiday">
+        <figcaption>September 2024 - Bali family holiday</figcaption>
+      </figure>
+      <figure class="tl-item">
+        <img src="images/img6.png" alt="September 2024 - Bali family holiday">
+        <figcaption>September 2024 - Bali family holiday</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- October 2024 -->
+  <div class="tl-period">
+    <p class="tl-period-label">October 2024 - Adelaide</p>
+    <div class="tl-grid cols-1">
+      <figure class="tl-item">
+        <img src="images/img7.png" alt="October 2024 - Iris moves to Adelaide and plays for Glenelg District Cricket Club">
+        <figcaption>October 2024 - Iris moves to Adelaide and plays for Glenelg District Cricket Club</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- December 2024 -->
+  <div class="tl-period">
+    <p class="tl-period-label">December 2024 - Christmas</p>
+    <div class="tl-grid cols-3">
+      <figure class="tl-item">
+        <img src="images/img8.png" alt="December 2024 - Iris spends Christmas with us">
+        <figcaption>December 2024 - Iris spends Christmas with us</figcaption>
+      </figure>
+      <figure class="tl-item">
+        <img src="images/img9.png" alt="December 2024 - Christmas in Adelaide">
+        <figcaption>December 2024 - Christmas in Adelaide</figcaption>
+      </figure>
+      <figure class="tl-item">
+        <img src="images/img11.png" alt="December 2024 - Iris's initiation into the Port Adelaide Football Club supporter family">
+        <figcaption>December 2024 - Iris's initiation into the Port Adelaide Football Club supporter family</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- Jan-Apr 2025 -->
+  <div class="tl-period">
+    <p class="tl-period-label">January - April 2025</p>
+    <div class="tl-grid cols-3">
+      <figure class="tl-item">
+        <img src="images/img10.png" alt="January 2025 - Elise and I take Iris to Goolwa for the weekend">
+        <figcaption>January 2025 - Elise and I take Iris to Goolwa for the weekend</figcaption>
+      </figure>
+      <figure class="tl-item">
+        <img src="images/img12.png" alt="February 2025 - Ladies day at Glenelg Cricket Club">
+        <figcaption>February 2025 - Ladies day at Glenelg Cricket Club</figcaption>
+      </figure>
+      <figure class="tl-item">
+        <img src="images/img13.png" alt="April 2025 - Exploring South Australia from above. Thanks pilot Alan">
+        <figcaption>April 2025 - Exploring South Australia from above. Thanks pilot Alan</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- Oct-Dec 2025 -->
+  <div class="tl-period">
+    <p class="tl-period-label">October - December 2025</p>
+    <div class="tl-grid cols-4">
+      <figure class="tl-item">
+        <img src="images/img14.png" alt="October 2025 - Iris is back for her second cricket season in Adelaide. Mish is happy to have her mum back.">
+        <figcaption>October 2025 - Iris is back for her second cricket season in Adelaide. Mish is happy to have her mum back.</figcaption>
+      </figure>
+      <figure class="tl-item">
+        <img src="images/img15.png" alt="December 2025 - Lili, Iris and I take on the Adelaide Test in 40+ degree heat">
+        <figcaption>December 2025 - Lili, Iris and I take on the Adelaide Test in 40+ degree heat</figcaption>
+      </figure>
+      <figure class="tl-item">
+        <img src="images/img16.png" alt="December 2025 - Christmas 2025">
+        <figcaption>December 2025 - Christmas 2025</figcaption>
+      </figure>
+      <figure class="tl-item">
+        <img src="images/img17.png" alt="December 2025 - I get engaged, Iris is here to celebrate">
+        <figcaption>December 2025 - I get engaged, Iris is here to celebrate</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- World Cup 2026 -->
+  <div class="tl-period">
+    <p class="tl-period-label">June 2026 - ICC Women's T20 World Cup</p>
+    <div class="tl-grid cols-3">
+      <figure class="tl-item">
+        <img src="images/img19.png" alt="June 2026 - ICC Women's T20 World Cup">
+        <figcaption>June 2026 - ICC Women's T20 World Cup</figcaption>
+      </figure>
+      <figure class="tl-item">
+        <img src="images/img20.png" alt="June 2026 - ICC Women's T20 World Cup">
+        <figcaption>June 2026 - ICC Women's T20 World Cup</figcaption>
+      </figure>
+      <figure class="tl-item">
+        <img src="images/img21.png" alt="June 2026 - ICC Women's T20 World Cup">
+        <figcaption>June 2026 - ICC Women's T20 World Cup</figcaption>
+      </figure>
+      <figure class="tl-item">
+        <img src="images/img22.png" alt="June 2026 - ICC Women's T20 World Cup">
+        <figcaption>June 2026 - ICC Women's T20 World Cup</figcaption>
+      </figure>
+      <figure class="tl-item">
+        <img src="images/img23.png" alt="June 2026 - ICC Women's T20 World Cup">
+        <figcaption>June 2026 - ICC Women's T20 World Cup</figcaption>
+      </figure>
+      <figure class="tl-item">
+        <img src="images/img24.png" alt="June 2026 - ICC Women's T20 World Cup">
+        <figcaption>June 2026 - ICC Women's T20 World Cup</figcaption>
+      </figure>
+      <figure class="tl-item">
+        <img src="images/img25.png" alt="June 2026 - ICC Women's T20 World Cup">
+        <figcaption>June 2026 - ICC Women's T20 World Cup</figcaption>
+      </figure>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  <p>Iris &amp; G - A Dutch Story<br>By Georgie Morris - 2026</p>
+</footer>
+
+</body>
+</html>
