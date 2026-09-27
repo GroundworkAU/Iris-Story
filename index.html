@@ -219,6 +219,17 @@
     display: block;
   }
 
+  /* Two images stacked in a column beside text */
+  .story-img-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .story-img-stack .story-img {
+    flex: 1;
+  }
+
   .story-img figcaption,
   .story-img-full figcaption {
     font-family: var(--sans);
@@ -481,14 +492,27 @@
     </figure>
   </div>
 
-  <div class="story-text">
-    <p>After three months in Den Haag we were attached at the hip, and by the end of the summer I was convincing her to come to Adelaide for the cricket season and join our family holiday to Bali. She came back again for her second season in 2025 and lived with me, and in June 2026 I travelled to England to watch her play in the World Cup. As I'm writing this, Iris is back in Adelaide, here for my brother's wedding, and then travelling with me to Vietnam to find my wedding dress.</p>
+  <div class="story-with-img">
+    <div class="story-text">
+      <p>After three months in Den Haag we were attached at the hip, and by the end of the summer I was convincing her to come to Adelaide for the cricket season and join our family holiday to Bali. She came back again for her second season in 2025 and lived with me, and in June 2026 I travelled to England to watch her play in the World Cup. As I'm writing this, Iris is back in Adelaide, here for my brother's wedding, and then travelling with me to Vietnam to find my wedding dress.</p>
 
-    <p>This is what I mean when I say everything happens for a reason. If we'd gone to England and not Den Haag, if we'd chosen a different year to go, if I hadn't said yes to a concert with a stranger we wouldn't be here today.</p>
+      <p>This is what I mean when I say everything happens for a reason. If we'd gone to England and not Den Haag, if we'd chosen a different year to go, if I hadn't said yes to a concert with a stranger we wouldn't be here today.</p>
 
-    <p>After spending that time around Iris, her team, and women's professional sport, I wanted to share her story. I'd tell anyone who would listen <em>"did you know this is the first time in history the Dutch women's team have ever qualified for a World Cup?"</em> and <em>"Iris is the first Dutch cricketer male or female to take 100 T20I wickets."</em> These stats are wild, and they're not something to move past. The more Iris and I spoke about her experience, how it felt for the team and their families, and what it's really like for these women compared to those who get to do this full time because financially they can, the more I wanted to put it somewhere. They defied the odds. They go against the grain. They work hard because they love what they do.</p>
+      <p>After spending that time around Iris, her team, and women's professional sport, I wanted to share her story. I'd tell anyone who would listen <em>"did you know this is the first time in history the Dutch women's team have ever qualified for a World Cup?"</em> and <em>"Iris is the first Dutch cricketer male or female to take 100 T20I wickets."</em> These stats are wild, and they're not something to move past. The more Iris and I spoke about her experience, how it felt for the team and their families, and what it's really like for these women compared to those who get to do this full time because financially they can, the more I wanted to put it somewhere. They defied the odds. They go against the grain. They work hard because they love what they do.</p>
 
-    <p>This is her story.</p>
+      <p>This is her story.</p>
+    </div>
+
+    <div class="story-img-stack">
+      <figure class="story-img">
+        <img src="images/img2.png" alt="Iris, Georgie and Fleur at the Olivia Rodrigo concert in Amsterdam">
+        <figcaption>June 2024 - Iris, Georgie and Fleur in Amsterdam</figcaption>
+      </figure>
+      <figure class="story-img">
+        <img src="images/img3.png" alt="Sarah visits Den Haag and meets Iris and the HCC crew">
+        <figcaption>July 2024 - Sarah comes to visit and meets the HCC crew</figcaption>
+      </figure>
+    </div>
   </div>
 
   <!-- CHAPTER: HOW IT STARTED -->
